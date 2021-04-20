@@ -35,49 +35,63 @@
    <summary><b>Functionality in the Drop Down:-</b></summary>
 <ul><br/>
 
- 1. COUNTIF(range, value) Function with wildcard Character(*) is used to store values of assumed variables starting from Excellent=5.....upto Poor=0. Functions used on the First cell of average i.e, K4
+ 1. Path of the commands used in the script are stored in variables.Further these variables are called using $variablename:
   
   <b>
   
 ```sh
-  COUNTIF(C4:J4,{"Excellent","Very good","Good","Satisfactory","Fair","Poor"})*{5,4,3,2,1,0})
+MKDIR=/usr/bin/mkdir
+RENAME=/usr/bin/mv
+ECHO=/usr/bin/echo
+SHOW=/usr/bin/cat
+DOWNLOAD=/usr/bin/wget
+
   ```
   </b> <br/>
   
-2. =SUM(values) function is used to Further count the Encounters of COUNTIF function to generate summation output
+2. New Directory Evaluation_DIR is made to the path where script is operating and move to the Directory location to store the further downloads and outputs:
 
 <b>
   
  ```sh
- (SUM(COUNTIF(C4:J4,{"Excellent","Very good","Good","Satisfactory","Fair","Poor"})*{5,4,3,2,1,0}))
+$MKDIR Evaluation_DIR  #Creating a new Directory to store the downloaded and generated output files.
+cd Evaluation_DIR 
   ```
   
   </b><br/>
   
-3. Summation is further divided with COUNTA(range) which stores the count of cell in the selected range. This Formula is applied to generate the average.The output of COUNTA for the selected range in my assignment is 8 </b>
+3. Downloading the Spreadsheet file as CSV output and Renaming it to Evaluation_of_sheet1 or 2 respectively and storing the same with same filename to Desired directory:
 
  <b> 
   
    ```sh
- (SUM(COUNTIF(Range, values)/COUNTA(C4:J4)
+$DOWNLOAD -q 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTrNldUZStbLCL-Q9Le9ilWrWxR1XW5N4zOzpBbM4aBEsgp2wheS7ioOx0yQ8a_zZuxvw4fXkwYH-Mh/pub?output=csv' 
+$RENAME pub?output=csv Evaluation_of_sheet1.csv 
+$DOWNLOAD -q 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRc3-RATBQ0U-XYPwb8uRHs0sMwJspqnspJxWFPXVz_pF0NA2QTFA-rkmPsRjMOlF_xPdpwBRjYOkhK/pub?output=csv' 
+$RENAME pub?output=csv Evaluation_of_sheet2.csv 
   ```
 </b><br/>
 
-4. Array Function is used to store the numerica values into their respective variables seperately. This Function is generally applied using CTRL+SHIFT+ENTER to save and exit the Editor.
+4. Echo command is used here to display the text as it is where required:
 
  <b>
   
    ```sh
-=ArrayFormula(SUM(COUNTIF(C4:J4,{"Excellent","Very good","Good","Satisfactory","Fair","Poor"})*{5,4,3,2,1,0}))/COUNTA(C4:J4)
+$ECHO "links downloaded. Extracting now..."
+$ECHO "-------------------------------------------EVALUATION OF SHEET 1 (DAILY BASIS)-------------------------------------------------------"
+$ECHO "----------------------------------------EVALUATION OF SHEET 2 (ON THE BASIS OF MARKDOWN FILE)-----------------------------------------------"
   ```
  </b><br/>
  
-5. For Bonus Task,I have used Conditional Formatting by selecting the range A4:K24 and select custom function on K with $ to lock the column reference as mentioned below along with red colour option to colour the rows whose value is less than 2.5 in column K:
+5.awk command is used to Extract the data where FS is used as Field seperator (,) and NR is used to select no. of regions in output between 4 to 24/26 and "" is used to Echo text as it is, \n is used to change the lines and  $2 ,$11, &11*8 is used to display column:
 
   <b>
   
 ```sh
- =$K4<2.5      
+awk '{FS=","}NR>=4 && NR<=24{print" " "NAME   : "$2, "\n" , "SUM    : " $11*8, "\n", "AVERAGE: " $11, "\n","__________________"}' Evaluation_of_sheet1.csv > Output_of_sheet1.csv 
+$SHOW Output_of_sheet1.csv
+awk '{FS=","}NR>=4 && NR<=26{print" " "NAME   : "$2, "\n" , "SUM    : " $11*8, "\n", "AVERAGE: " $11, "\n","__________________"}' Evaluation_of_sheet2.csv > Output_of_sheet2.csv 
+$SHOW Output_of_sheet2.csv
   ```
 </b></ul>
 </details>
@@ -93,8 +107,7 @@
  <br/>
  <br/>
  <b>Link of the Spreadsheet:</b> 
- <p align="left"><a href="https://docs.google.com/spreadsheets/d/1Meany3O0o46ljwN4PBSlDvy0NW9g95EqivOz28xYg9Q/edit?ts=6075dc15#gid=0"> <img src="https://www.picgifs.com/graphics/c/click-here/graphics-click-here-851444.gif" border="0" /></a> <a href="https://github.com/somgithub111/keenable/blob/main/MyPassion.md"><My Passion and Hobby/></a></p>
-
+ <p align="left"><a href="https://drive.google.com/drive/folders/19HB1MKjL_NrmajPQ-TXmCGRAr_WBNnfE?usp=sharing"> <img src="https://www.picgifs.com/graphics/c/click-here/graphics-click-here-851444.gif" border="0" /></a> 
 Feel Free to Drop any Suggestions/Upgradations regarding this markdown on below mail-
 <p align="center">
   <a href="mailto:someshkmr4@gmail.com"><img src="https://img.icons8.com/color/96/000000/gmail.png" alt="email"/></a>
