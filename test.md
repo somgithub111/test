@@ -13,7 +13,9 @@
 |Test Cases|Test Case Description|Steps Performed| Test Status|Output
 |:----:|:-----:|:-----:|:-----:|:-----:|
 |Test Case 1| **WEB PUBLISHING** <br/> Publish the Spreadsheet's link to web with CSV output | A Copy of Spreadsheet's link has been published to web using *Publish to web* option from **File menu** of spreadsheet opting the CSV mode | PASS |![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-19%2023-55-40.png) <br/> Client/Approver's Signature _______ |
-|Test Case 2| **DOWNLOAD THE LINK VIA SCRIPT** <br/> Script is designed to download the files via published URL using _wget_ Command| Using _Wget  | 
+|Test Case 2| **DECLARING PATHS IN VARIABLES** <br/> Path of the commands are stored in variables so that it can be called using $var_name when required| MKDIR=/usr/bin/mkdir <br/> RENAME=/usr/bin/mv <br/> ECHO=/usr/bin/echo <br/> SHOW=/usr/bin/cat <br/> DOWNLOAD=/usr/bin/wget <br/> Note: Do not use root user to operate
+
+|Test Case 3| **DOWNLOAD THE LINK VIA SCRIPT** <br/> Script is designed to download the files via published URL using _wget_ Command| Using _Wget  | 
 |Test Case 3| Using Special Functions       | |
 
 ------
