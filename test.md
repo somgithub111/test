@@ -106,8 +106,9 @@ $SHOW Output_of_sheet2.csv
  ----
  <br/>
  <br/>
- <b>Link of the Spreadsheet:</b> 
+ <b>Link of the Script:</b> 
  <p align="left"><a href="https://drive.google.com/drive/folders/19HB1MKjL_NrmajPQ-TXmCGRAr_WBNnfE?usp=sharing"> <img src="https://www.picgifs.com/graphics/c/click-here/graphics-click-here-851444.gif" border="0" /></a> 
+ 
 Feel Free to Drop any Suggestions/Upgradations regarding this markdown on below mail-
 <p align="center">
   <a href="mailto:someshkmr4@gmail.com"><img src="https://img.icons8.com/color/96/000000/gmail.png" alt="email"/></a>
