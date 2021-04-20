@@ -16,17 +16,17 @@
 |Test Case 2| **DECLARING PATHS IN VARIABLES** <br/> Path of the commands are stored in variables so that it can be called using $var_name when required| MKDIR=/usr/bin/mkdir <br/> RENAME=/usr/bin/mv <br/> ECHO=/usr/bin/echo <br/> SHOW=/usr/bin/cat <br/> DOWNLOAD=/usr/bin/wget <br/><br/> **Note: Do not use root user to operate**| PASS | ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2009-19-11.png) <br/> Client/Approver's Signature _______ |
 |Test Case 3| **DOWNLOAD THE LINK SILENTLY** <br/> _wget_ Command is a non-interactive network downloader| Using $wget to call _wget_ from stored path in variable and to download quietly we have used _$wget -q_ (now downloading process is quietly running as hidden mode) and $ECHO is used to display the confirmation of downloaded link.| PASS | ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2010-00-26.png) <br/> Client/Approver's Signature _______ |
 |Test Case 4| **RENAME CSV FILE AND STORE** <br/> Downloaded file via _Test case 3_ is now renamed to Evaluation_of_sheet1 and Evaluation_of_sheet2 stored directly to Evaluation_DIR created by the script to your operating location.| $RENAME is used to call the *mv* command from it's path and renaming and storing the output file to newly created directory.Output can be visible as shown in the image at the Right-End |PASS|![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2010-09-57.png) <br/> Client/Approver's Signature _______ |
-|Test Case 5| **EXTRACTING THE DATA FROM CSV** <br/> We have used the _Awk_ command to extract the data that we want to display| awk{print" " "NAME   : "$2, "\n" , "SUM    : " $11*8, "\n", "AVERAGE: " $11, "\n","__________________"} <br/> where, Name: $2 is Extracing the second column <br/> Sum = $11*8 is Extracting the 11th column of Average and multiply each by 8 to get the Sum <br/> Average : $11 is Extracting the 11th column </br> \t is used to provide one tab horizontal space|FAIL| ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2010-57-51.png)|
+|Test Case 5| **EXTRACTING THE DATA FROM CSV** <br/> We have used the _awk_ command to extract the data that we want to display| awk '{print" " "NAME   : "$2, "\n" , "SUM    : " $11*8, "\n", "AVERAGE: " $11, "\n","__________________"}' Evaluation_of_sheet1.csv <br/> where for Evaluation_of_Sheet1,<br/> Name: $2 is Extracing the second column <br/> Sum = $11*8 is Extracting the 11th column of Average and multiply each by 8 to get the Sum <br/> Average : $11 is Extracting the 11th column </br> \t is used to provide one tab horizontal space. <br/> "" is used to print value as it is.<br/> Output is messed up due to some issue in command|FAIL| ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2010-57-51.png) <br/> Fixation Required|
+|Test Case 6| **RESOLUTION OF TEST CASE:5 ISSUE** <br/> The issue occured in Test Case 5 has been resolved with certain changes in command.<br/> Although Script Passed to provide the desired output , but the only glitch is there it's counting the Whole region and unrelevant data is also visible as Output. | Now **\t** is replaced with **\n** to change the line of output. <br/> {FS=","} is the command used here as a File Separator with delimiter (,) as CSV stores the file as a comma separated values.|PASS with minor Glitch| ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2011-15-59.png) <br/> Minor Fixation Required.|
+|Test Case 7| **FIXATION OF OUTPUT** <br/> The Output issue of display from first columns are limited using NR command in awk. It limits the no. of region to display| Putting the NR in awk as shown below has fixed the issue: <br/> awk '{FS=","}**NR>=4 && NR<=26**{print...... <br/> It limits the region of output display between 4 to 26. The issue is Fixed now and the Output is Structured correctly. |PASS| ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2011-32-19.png)<br/> Client/Approver's Signature _______ |
+|Test Case 8| **STORING AND DISPLAY THE OUTPUT** <br/> The output file is used to store in the desired folder created by script and display the Output as well to the terminal. | Used Redirectional operator at the End of awk Extracted File to store its values to Output_  <br/>awk 'function' Evaluation_of_sheet1.csv > Output_of_sheet1.csv and following the same for sheet2 to store in same directory Evaluation_DIR<br/> Display output at terminal using $SHOW using cat command's path:<br/> $SHOW Output_of_sheet1.csv <br/> $SHOW Output_of_sheet2.csv. |PASS| ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2011-57-32.png) Client/Approver's Signature _______ |
 
 ------
 
 <h2 align="center">IMPLEMENTATION RULES USED </h2> 
 
  
-<p align="center"> <a href="https://exceljet.net/excel-functions/excel-sum-function"><img align="center" alt="GitHub" src="https://img.shields.io/badge/=Sum()%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a></p>
-<p align="center"> <a href="https://exceljet.net/excel-functions/excel-counta-function"><img align="center" alt="GitHub" src="https://img.shields.io/badge/CountA(range)%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a></p>
-<p align="center"> <a href="https://www.ablebits.com/office-addins-blog/2015/02/25/array-formulas-functions-excel/"><img align="center" alt="GitHub" src="https://img.shields.io/badge/Array_Functions%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a></p>
-<p align="center"> <a href="https://exceljet.net/excel-functions/excel-countif-function"><img align="center" alt="GitHub" src="https://img.shields.io/badge/Countif(range,values)%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a></p>
+<p align="center"> 1. wget -q (Non-interactive Downloader) <br/> 2. mv (Renaming and storing the output file) <br/> 3. Echo (used to print the text " ") <br/> 4. awk (Used to Extract values)</p>
 
 ------
 
@@ -82,18 +82,12 @@
 </b></ul>
 </details>
 
- -----
- 
- <h2 align="center">TEST RESULTS</h2> 
- 
- The Test Results were successful as output for any change in live Entry of any cell will further calculate the correct output and Conditional formatting for displaying the row with RED colour is also working with real time.
- 
  ----
  
  
  <h2 align="center">CONCLUSION</h2> 
 
- I have researched on google to Explore different Ideas, functions and Formulas through which i have gained the calculated Idea to complete this task.I have also observed multiple methods of other Interns assigned with this task and observed the other possible ways through which this task has been completed.
+ The Script is Completed successfully and the outputs are generated in the correct manner.
  
  ----
  <br/>
