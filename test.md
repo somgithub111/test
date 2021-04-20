@@ -13,16 +13,15 @@
 |Test Cases|Test Case Description|Steps Performed| Test Status|Output
 |:----:|:-----:|:-----:|:-----:|:-----:|
 |Test Case 1| **WEB PUBLISHING** <br/> Publish the Spreadsheet's link to web with CSV output | A Copy of Spreadsheet's link has been published to web using *Publish to web* option from **File menu** of spreadsheet opting the CSV mode | PASS |![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-19%2023-55-40.png) <br/> Client/Approver's Signature _______ |
-|Test Case 2| **DECLARING PATHS IN VARIABLES** <br/> Path of the commands are stored in variables so that it can be called using $var_name when required| MKDIR=/usr/bin/mkdir <br/> RENAME=/usr/bin/mv <br/> ECHO=/usr/bin/echo <br/> SHOW=/usr/bin/cat <br/> DOWNLOAD=/usr/bin/wget <br/> Note: Do not use root user to operate
-
-|Test Case 3| **DOWNLOAD THE LINK VIA SCRIPT** <br/> Script is designed to download the files via published URL using _wget_ Command| Using _Wget  | 
-|Test Case 3| Using Special Functions       | |
+|Test Case 2| **DECLARING PATHS IN VARIABLES** <br/> Path of the commands are stored in variables so that it can be called using $var_name when required| MKDIR=/usr/bin/mkdir <br/> RENAME=/usr/bin/mv <br/> ECHO=/usr/bin/echo <br/> SHOW=/usr/bin/cat <br/> DOWNLOAD=/usr/bin/wget <br/><br/> **Note: Do not use root user to operate**| PASS | ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2009-19-11.png) <br/> Client/Approver's Signature _______ |
+|Test Case 3| **DOWNLOAD THE LINK SILENTLY** <br/> _wget_ Command is a non-interactive network downloader| Using $wget to call _wget_ from stored path in variable and to download quietly we have used _$wget -q_ (now downloading process is quietly running as hidden mode) | PASS | ![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2010-00-26.png) <br/> Client/Approver's Signature _______ |
+|Test Case 4| **RENAME CSV FILE AND STORE** <br/> Downloaded file via _Test case 3_ is now renamed to Evaluation_of_sheet1 and Evaluation_of_sheet2 stored directly to Evaluation_DIR created by the script to your operating location.| $RENAME is used to call the *mv* command from it's path and renaming and storing the output file to newly created directory. Output can be visible as shown in the image at the Right-End |PASS|![](https://raw.githubusercontent.com/somgithub111/test/master/Screenshot%20from%202021-04-20%2010-09-57.png) <br/> Client/Approver's Signature _______ | 
 
 ------
 
 <h2 align="center">IMPLEMENTATION RULES USED </h2> 
 
-
+ 
 <p align="center"> <a href="https://exceljet.net/excel-functions/excel-sum-function"><img align="center" alt="GitHub" src="https://img.shields.io/badge/=Sum()%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a></p>
 <p align="center"> <a href="https://exceljet.net/excel-functions/excel-counta-function"><img align="center" alt="GitHub" src="https://img.shields.io/badge/CountA(range)%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a></p>
 <p align="center"> <a href="https://www.ablebits.com/office-addins-blog/2015/02/25/array-formulas-functions-excel/"><img align="center" alt="GitHub" src="https://img.shields.io/badge/Array_Functions%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a></p>
