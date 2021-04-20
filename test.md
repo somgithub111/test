@@ -83,7 +83,7 @@ $ECHO "----------------------------------------EVALUATION OF SHEET 2 (ON THE BAS
   ```
  </b><br/>
  
-5.awk command is used to Extract the data where FS is used as Field seperator (,) and NR is used to select no. of regions in output between 4 to 24/26 and "" is used to Echo text as it is, \n is used to change the lines and  $2 ,$11, &11*8 is used to display column:
+5. awk command is used to Extract the data where FS is used as Field seperator (,) and NR is used to select no. of regions in output between 4 to 24/26 and "" is used to Echo text as it is, \n is used to change the lines and  $2 ,$11, &11*8 is used to display column:
 
   <b>
   
