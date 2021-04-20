@@ -2,8 +2,8 @@
 <h2 align="center">OBJECTIVE OF THE ASSIGNMENT</h2> 
 
  To make a Script to download the Previously created two Evaluation reports in CSV file through link and Extract the data to dispaly only below points from both:-  
- 1. Intern Name: _____
- 2. Sum    : _______
+ 1. Name: _____
+ 2. Sum  : _______
  3. Average:______
 
 ----
